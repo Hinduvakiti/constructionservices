@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Services Creative and Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .section {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .section-subtitle {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .section-button {
+            padding: 15px 30px;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .section-button:hover {
+            background-color: #e64a19;
+            transform: scale(1.1);
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-info img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-info h3 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .product-info p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .product-info button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-info button:hover {
+            background-color: #45a049;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        #welcome-section {
+            background-image: url('images/title.jpeg');
+            display: flex;
+        }
+
+        #home {
+            background-image: url('images/welcome2.jpg');
+        }
+
+        #about-us, #our-services, #products, #contact, #pricing, #projects, #faq, #professionals {
+            background-color: #f4f4f4;
+        }
+
+        .Ourservices, .choose-us-text, .contact-form, .pricing, .projects, .faq, .professionals {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: left;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .Ourservices {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .Ourservices img, .service img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .service {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            width: calc(50% - 40px);
+        }
+
+        .service p {
+            margin-left: 10px;
+        }
+
+        .projects, .professionals {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .project-card, .professional-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover, .professional-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img, .professional-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-card h3, .professional-card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .project-card p, .professional-card p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Animation styles */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .profile-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .view-profile-button {
+            /* Center the button */
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-profile-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+            }
+
+            .section-subtitle {
+                font-size: 28px;
+            }
+
+            .section-button {
+                font-size: 16px;
+            }
+
+            .product-card, .project-card, .professional-card {
+                width: 100%;
+            }
+
+            .Ourservices {
+                flex-direction: column;
+            }
+
+            .service {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .service img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#home" onclick="showHome()">Home</a>
+        <a href="#about-us" onclick="showAboutUs()">About Us</a>
+        <a href="#our-services" onclick="showOurServices()">Our Services</a>
+        <a href="#products" onclick="showProducts()">Products</a>
+        <a href="#professionals" onclick="showProfessionals()">Professionals</a>
+        <a href="#contact" onclick="showContact()">Contact</a>
+        <a href="#projects" onclick="showProjects()">Projects</a>
+        <a href="#faq" onclick="showContact()">FAQ</a>
+
+    </div>
+
+    <div id="welcome-section" class="section">
+        <h1 class="section-title">Construction Services and Professionals</h1>
+        <button class="section-button" onclick="showMainWelcome()">Enter</button>
+    </div>
+
+    <div id="home" class="section">
+        <h2 class="section-title">Welcome to Our Company</h2>
+        <button class="section-button" onclick="showAboutUs()">Next</button>
+    </div>
+
+    <div id="about-us" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="choose-us-text">
+            <p>We are a leading construction company dedicated to delivering high-quality and innovative construction solutions. With years of experience in the industry, our team of skilled professionals ensures that each project is completed to the highest standards.</p>
+            <button class="section-button" onclick="showOurServices()">Next</button>
+        </div>
+    </div>
+
+    <div id="our-services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="Ourservices">
+            <div class="service">
+                <img src="plumbing.png" alt="Plumbing">
+                <div>
+                    <h3>Plumbing</h3>
+                    <p>Comprehensive plumbing services including installation, repair, and maintenance.</p>
+                </div>
+            </div>
+            <div class="service">
+                <img src="painting.jpeg" alt="PAINTING">
+                <div>
+                    <h3>Painting</h3>
+                    <p>High-quality painting services for residential and commercial properties.</p>
+                </div>
+            </div>
+            <div class="service">
+                <img src="eng.jpeg" alt="Engineer works">
+                <div>
+                    <h3>ENGINEERS</h3>
+                    <p>Highly qualified Engineers with best work.</p>
+                </div>
+            </div>
+            <!-- Repeat for other services -->
+        </div>
+        <button class="section-button" onclick="showProducts()">Next</button>
+    </div>
+
+    <div id="products" class="section">
+        <h2 class="section-title">Products</h2>
+        <div class="product-list">
+            <!-- Product Cards -->
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="cement.jpeg" alt="Cement">
+                    <h3>CEMENT</h3>
+                    <p>High-quality cement for all your construction needs.</p>
+                    <button id="cementBtn">View Details</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="steel.jpeg" alt="Steel">
+                    <h3>STEEL</h3>
+                    <p>Durable steel for structural integrity.</p>
+                    <button id="steelBtn">View Details</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="blocks-9.jpeg" alt="Blocks">
+                    <h3>BLOCKS</h3>
+                    <p>Durable blocks for structural integrity.</p>
+                    <button id="BricksBtn">View Details</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="bricks-8.jpeg" alt="Bricks">
+                    <h3>BLOCKS</h3>
+                    <p>Durable blocks for structural integrity.</p>
+                    <button id="BricksBtn">View Details</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="binding wiress-5.jpeg" alt="Binding wires">
+                    <h3>BINDING WIRES</h3>
+                    <p>Durable blocks for structural integrity.</p>
+                    <button id="Binding wiresBtn">View Details</button>
+                </div>
+            </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <img src="binding wiress-5.jpeg" alt="Binding wires">
+                    <h3>BINDING WIRES</h3>
+                    <p>Durable blocks for structural integrity.</p>
+                    <button id="Binding wiresBtn">View Details</button>
+                </div>
+            </div>
+            <button class="section-button" onclick="showProfessionals()">Next</button>
+            <!-- Repeat for other products -->
+        </div>
+    </div>
+
+    <!-- Cement Modal -->
+    <div id="cementModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cement Details</h2>
+            <div class="product-list">
+                <div class="product-card">
+                    <div class="product-info">
+                        <img src="jk-super-cement-250x250.webp" alt="Cement 1">
+                        <h3>JKCement</h3>
+                        <p>High compressive strength, quick setting time, and low heat of hydration
+                            Brand:JK Super
+                            Packaging Size:50kg
+                            Cement Grade:43
+                            Country of Origin:Made in India
+                        </p>
+                        <li>Cost:500/per bag</li>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <img src="AMBUJAjpeg.jpeg" alt="Cement 1">
+                        <h3>AMBUJA Cement</h3>
+                        <p>India’s leading cement company known for its hassle-free, home building solutions
+                            Type:PPC (Pozzolana Portland Cement)
+                            Packaging Size:50 KG
+                            Brand:Ambuja
+                            Quantity Unit
+                        </p>
+                        <li>Cost:450/per bag</li>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-info">
+                        <img src="ULTRA.jpeg" alt="Cement 1">
+                        <h3>ULTRA TECH CEMENT</h3>
+                        <p> India's No. 1 cement company and your home-building partner, providing high-quality building materials
+                            Cement Grade:Grade 53
+                            Packaging Type:Bag
+                            Packaging Size:50 Kg
+                        </p>
+                        <li>Cost:435/per bag</li>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="professionals" class="section">
+        <h2 class="section-title">Our Professionals</h2>
+        <div class="professionals-list">
+            <div class="professional-category">
+                <h3 class="section-subtitle">Engineers</h3>
+                <div class="professionals">
+                    <div class="professional-card">
+                        <img src="images/engineer1.jpeg" alt="Engineer 1">
+                        <h3>Engineer ROHAN</h3>
+                        <p>Specialized in civil engineering with 10 years of experience.</p>
+                        <button class="view-profile-button" onclick="toggleProfileContent(this)">View Profile</button>
+                        <a href="structural.jpeg" target="_blank" class="external-file-link">View Resume</a>
+                        <a href="structural.jpeg" target="_blank" class="external-file-link">View Demo Project</a>
+                        <div class="profile-content">
+                            <p>Contact: john.doe@example.com</p>
+                            <p>Location: New York, NY</p>
+                            <p>Rating: ★★★★☆</p>
+                        </div>
+                    </div>
+                    <div class="professional-card">
+                        <img src="images/engineer2.jpeg" alt="Engineer 2">
+                        <h3>Engineer Jane </h3>
+                        <p>Expert in structural engineering with 8 years of experience.</p>
+                        <button class="view-profile-button" onclick="toggleProfileContent(this)">View Profile</button>
+                        <div class="profile-content">
+                            <p>Contact: jane.smith@example.com</p>
+                            <p>Location: Los Angeles, CA</p>
+                            <p>Rating: ★★★★☆</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="professional-category">
+                <h3 class="section-subtitle">Plumbers</h3>
+                <div class="professionals">
+                    <div class="professional-card">
+                        <img src="images/plumber1.jpeg" alt="Plumber 1">
+                        <h3>Plumber Mark Brown</h3>
+                        <p>Experienced in residential plumbing with 5 years of experience.</p>
+                        <button class="view-profile-button" onclick="toggleProfileContent(this)">View Profile</button>
+                        <div class="profile-content">
+                            <p>Contact: mark.brown@example.com</p>
+                            <p>Location: Miami, FL</p>
+                            <p>Rating: ★★★★☆</p>
+                        </div>
+                    </div>
+                    <div class="professional-card">
+                        <img src="images/plumber2.jpeg" alt="Plumber 2">
+                        <h3>Plumber THARUN</h3>
+                        <p>Expert in commercial plumbing with 7 years of experience.</p>
+                        <button class="view-profile-button" onclick="toggleProfileContent(this)">View Profile</button>
+                        <div class="profile-content">
+                            <p>Contact: lucy.green@example.com</p>
+                            <p>Location: Houston, TX</p>
+                            <p>Rating: ★★★★☆</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Add more categories and professionals as needed -->
+            <button class="section-button" onclick="showSection('contact')">Contact Us</button>
+        </div>
+    </div>
+
+    <div id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+            <p>Feel free to reach out to us for any inquiries or project discussions:</p>
+            <p>Phone: 123-456-7890</p>
+            <p>Email: contact@constructionservices.com</p>
+        </div>
+        <button class="section-button" onclick="showPricing()">Next</button>
+    </div>
+
+    <div id="pricing" class="section">
+        <h2 class="section-title">Pricing</h2>
+        <div class="pricing">
+            <p>Our competitive pricing ensures you get the best value for your investment:</p>
+            <ul>
+                <li>Basic Package: $1000</li>
+                <li>Standard Package: $2000</li>
+                <li>Premium Package: $3000</li>
+            </ul>
+        </div>
+        <button class="section-button" onclick="showProjects()">Next</button>
+    </div>
+
+    <div id="projects" class="section">
+        <h2 class="section-title">Our Projects</h2>
+        <div class="projects">
+            <!-- Project Cards -->
+            <div class="project-card">
+                <img src="com.jpeg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Project 1 Description</p>
+            </div>
+            <div class="project-card">
+                <img src="ima.jpeg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>Project 2 Description</p>
+            </div>
+            <!-- Repeat for other projects -->
+        </div>
+        <button class="section-button" onclick="showFAQ()">Next</button>
+    </div>
+
+    <div id="faq" class="section">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+            <p>Frequently Asked Questions:</p>
+            <ul>
+                <li>Question 1: How do I start a project?</li>
+                <li>Answer 1: Contact us via phone or email to discuss your project requirements.</li>
+                <li>Question 2: What are your working hours?</li>
+                <li>Answer 2: Our working hours are from 9 AM to 5 PM, Monday to Friday.</li>
+                <!-- Repeat for other FAQs -->
+            </ul>
+        </div>
+        <button class="section-button" onclick="showProfessionals()">Next</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Construction Services. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show sections based on button clicks
+        function showMainWelcome() {
+            document.getElementById('welcome-section').style.display = 'none';
+            document.getElementById('home').style.display = 'flex';
+        }
+
+        function showHome() {
+            hideAllSections();
+            document.getElementById('home').style.display = 'flex';
+        }
+
+        function showAboutUs() {
+            hideAllSections();
+            document.getElementById('about-us').style.display = 'flex';
+        }
+
+        function showOurServices() {
+            hideAllSections();
+            document.getElementById('our-services').style.display = 'flex';
+        }
+
+        function showProducts() {
+            hideAllSections();
+            document.getElementById('products').style.display = 'flex';
+        }
+
+        function showProfessionals() {
+            hideAllSections();
+            document.getElementById('professionals').style.display = 'flex';
+        }
+
+        function showContact() {
+            hideAllSections();
+            document.getElementById('contact').style.display = 'flex';
+        }
+
+        function showPricing() {
+            hideAllSections();
+            document.getElementById('pricing').style.display = 'flex';
+        }
+
+        function showProjects() {
+            hideAllSections();
+            document.getElementById('projects').style.display = 'flex';
+        }
+
+        function showFAQ() {
+            hideAllSections();
+            document.getElementById('faq').style.display = 'flex';
+        }
+
+        function hideAllSections() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+
+        // Toggle professional profile visibility
+        function toggleProfile(profileId) {
+            const profile = document.getElementById($,{profileId}-container);
+            profile.style.display = profile.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Modal functionality
+        const cementModal = document.getElementById('cementModal');
+        const cementBtn = document.getElementById('cementBtn');
+        const span = document.getElementsByClassName('close')[0];
+
+        cementBtn.onclick = function() {
+            cementModal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            cementModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == cementModal) {
+                cementModal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
